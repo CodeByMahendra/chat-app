@@ -16,10 +16,15 @@ const Sidebar = () => {
     const {otherUsers} = useSelector(store=>store.user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    
+    const url = "https://chatapp-backend-ny29.onrender.com";
+    // const url = "http://localhost:3005"
+
+
 
     const logoutHandler = async () => {
         try {
-            const res = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/user/logout`);
+            const res = await axios.get(`${url}/api/v1/user/logout`);
             navigate("/");
             toast.success(res.data.message);
             dispatch(setAuthUser(null));

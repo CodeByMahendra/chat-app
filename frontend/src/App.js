@@ -13,12 +13,15 @@ import Final from './components/Final';
 function App() { 
   const { authUser } = useSelector(store => store.user);
   const dispatch = useDispatch();
-
+// const url = "http://localhost:3005"
+  const url = "https://chatapp-backend-ny29.onrender.com";
   useEffect(() => {
     let socketio;
 
     if (authUser) {
-      socketio = io(`${process.env.REACT_APP_BACKEND_URL}`, {
+      socketio = io(url, {
+
+      // socketio = io(`${process.env.REACT_APP_BACKEND_URL}`, {
         query: {
           userId: authUser._id
         }
@@ -42,11 +45,11 @@ function App() {
     },
     {
       path: "/login",
-      element: authUser ? <Navigate to="/chat" /> : <Login />
+      element: authUser ? <Navigate to="/chat" /> : <Login url={url}/>
     },
     {
       path: "/signup",
-      element: <Signup />
+      element: <Signup url={url} />
     },
     {
       path: "/chat",
@@ -56,7 +59,15 @@ function App() {
       path: "/msg",
       element: authUser ? <Final /> : <Navigate to="/login" />
     },
-  ]);
+
+  ],
+  {
+    future: {
+      v7_startTransition: true,  // Enables React.startTransition for state updates
+      v7_relativeSplatPath: true, // Updates relative route resolution within splat routes
+    }
+  }
+);
 
   return (
     <RouterProvider router={router} />

@@ -11,11 +11,14 @@ const SendInput = () => {
     const dispatch = useDispatch();
     const { selectedUser } = useSelector(store => store.user);
     const { messages } = useSelector(store => store.message);
+    const url = "https://chatapp-backend-ny29.onrender.com";
+    // const url = "http://localhost:3005"
+
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v1/message/send/${selectedUser?._id}`, { message }, {
+            const res = await axios.post(`${url}/api/v1/message/send/${selectedUser?._id} `, { message }, {
                 headers: { 'Content-Type': 'application/json' },
                 withCredentials: true
             });

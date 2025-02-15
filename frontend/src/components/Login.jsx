@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { setAuthUser } from '../redux/userSlice';
 
 
-const Login = () => {
+const Login = ({url}) => {
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -19,12 +19,15 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post(`http://localhost:3005/api/v1/user/login`, user, {
+      const apiUrl = `${url}/api/v1/user/login`; 
+        console.log(apiUrl)
+      const res = await axios.post(apiUrl, user, {
         headers: {
           'Content-Type': 'application/json'
         },
         withCredentials: true
       });
+      console.log("response ",res)
   
       if (res && res.data) {
         dispatch(setAuthUser(res.data)); 

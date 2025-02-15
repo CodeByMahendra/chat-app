@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const Signup = () => {
+const Signup = ({url}) => {
   const [user, setUser] = useState({
     fullName: "",
     username: "",
@@ -19,11 +19,10 @@ const Signup = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:3005/api/v1/user/register";
-      console.log("Sending request to:", url);
-      console.log("Request data:", user);
+      const apiUrl = `${url}/api/v1/user/register`; 
+     
 
-      const res = await axios.post(url, user, {
+      const res = await axios.post(apiUrl, user, {
         headers: {
           "Content-Type": "application/json",
         },
