@@ -17,7 +17,7 @@ const Sidebar = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     
-    const url = "https://chatapp-backend-ny29.onrender.com";
+    const url = "https://chat-app-vkfw.onrender.com";
     // const url = "http://localhost:3005"
 
 
