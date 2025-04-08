@@ -14,7 +14,8 @@ function App() {
   const { authUser } = useSelector(store => store.user);
   const dispatch = useDispatch();
 // const url = "http://localhost:3005"
-  const url = "https://chatapp-backend-ny29.onrender.com";
+  const url = "https://chat-app-vkfw.onrender.com";
+  
   useEffect(() => {
     let socketio;
 
