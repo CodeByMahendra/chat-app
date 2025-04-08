@@ -11,7 +11,7 @@ const SendInput = () => {
     const dispatch = useDispatch();
     const { selectedUser } = useSelector(store => store.user);
     const { messages } = useSelector(store => store.message);
-    const url = "https://chatapp-backend-ny29.onrender.com";
+    const url = "https://chat-app-vkfw.onrender.com";
     // const url = "http://localhost:3005"
 
 
